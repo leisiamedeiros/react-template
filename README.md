@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Getting Started with React Template
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![image](https://user-images.githubusercontent.com/10652534/117591470-0b767000-b10b-11eb-9bd3-452cf49dc0e8.png)
 
 ## Available Scripts
 
