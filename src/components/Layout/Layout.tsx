@@ -32,7 +32,7 @@ export default function Layout(props: any) {
 export function Header() {
     return (
         <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <Link to="/" className="navbar-brand col-md-3 col-lg-2 me-0 px-3">Meu App</Link>
+            <Link to="/" className="navbar-brand col-md-3 col-lg-2 me-0 px-3">My App</Link>
 
             <ul className="navbar-nav px-3">
                 <li className="nav-item text-nowrap">
