@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 interface AlertProperties {
     message: string;
     classColor?: string;
+    onClose: () => void;
 }
-export default class Alert extends Component<any, any> {
+export default class Alert extends Component<AlertProperties, any> {
     render() {
         return (
             <div className={this.getClassColor(this.props.classColor)} role="alert">
@@ -17,6 +18,6 @@ export default class Alert extends Component<any, any> {
 
     getClassColor(classColor?: string): string {
         return classColor ? `alert alert-${classColor}`
-            : "alert alert-primary alert-dismissible fade show";
+            : "alert alert-primary";
     }
 }

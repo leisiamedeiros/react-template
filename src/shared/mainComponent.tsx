@@ -6,9 +6,9 @@ interface ComponentModelState<S> {
     isLoading: boolean,
     redirectTo: string,
     isRedirecting: boolean,
-    errors: any[];
-    statusMessage: string;
     showAlert: boolean;
+    alertMessage: string;
+    alertClass: string;
 }
 export abstract class MainComponent<S = any, P = any> extends React.Component<P, ComponentModelState<S>> {
 
@@ -22,9 +22,9 @@ export abstract class MainComponent<S = any, P = any> extends React.Component<P,
             isLoading: false,
             redirectTo: '/',
             isRedirecting: false,
-            errors: [],
-            statusMessage: '',
-            showAlert: false
+            showAlert: false,
+            alertMessage: '',
+            alertClass: ''
         };
 
         this.state = this.initialState;
@@ -66,52 +66,22 @@ export abstract class MainComponent<S = any, P = any> extends React.Component<P,
         this.setState({ ...this.state, payload: model });
     }
 
-    hasKeyError(key: string): boolean {
-        let found = false;
-
-        this.state.errors.forEach(x => {
-            if (x.key === key.toLowerCase()) found = true;
-        });
-
-        return found;
-    }
-
-    getErrorByKey(key: string, defaultValue: string): string {
-        let error = defaultValue;
-
-        this.state?.errors.forEach(el => {
-            if (el.key === key.toLowerCase()) error = el.value;
-        });
-
-        return error;
-    }
-
-    async setError(key: string, value: string) {
-        this.setState(s => {
-            let e = s.errors;
-            e.push({ key: key.toLowerCase(), value: value });
-            return { ...s, errors: e };
+    hideAlert() {
+        this.setState({
+            showAlert: false
         });
     }
 
-    hasErrors(): boolean {
-        return this.state.errors.length > 0;
-    }
-
-    async clearErrors() {
-        this.setState({ errors: [] });
-    }
-
-    hideAlert(seconds: number = 4000) {
-        setTimeout(() => {
-            this.setState({
-                showAlert: false
-            })
-        }, seconds);
+    setAlert(message: string, className: string) {
+        this.setState({
+            showAlert: true,
+            alertMessage: message,
+            alertClass: className
+        })
     }
 
     async clearMessages() {
-        this.setState({ statusMessage: '' });
+        this.setState({ alertMessage: '' });
     }
 
     async redirectTo(uri: string) {

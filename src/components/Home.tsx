@@ -15,6 +15,6 @@ export default class Home extends Component {
     }
 
     close() {
-        throw new Error('Method not implemented.');
+
     }
 }
