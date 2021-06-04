@@ -17,7 +17,7 @@ export default class Alert extends Component<AlertProperties, any> {
     }
 
     getClassColor(classColor?: string): string {
-        return classColor ? `alert alert-${classColor}`
-            : "alert alert-primary";
+        return classColor ? `alert alert-${classColor} alert-dismissible fade show`
+            : "alert alert-primary alert-dismissible fade show";
     }
 }
