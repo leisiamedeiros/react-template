@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import { Redirect } from 'react-router-dom';
+import Alert from '../components/Alert/Alert';
 
 interface ComponentModelState<S> {
     payload: S,
@@ -78,6 +79,16 @@ export abstract class MainComponent<S = any, P = any> extends React.Component<P,
             alertMessage: message,
             alertClass: className
         })
+    }
+
+    showAlert() {
+        if (this.state.showAlert) {
+            return <Alert
+                message={this.state.alertMessage}
+                classColor={this.state.alertClass}
+                onClose={() => this.hideAlert()}
+            />
+        }
     }
 
     async clearMessages() {

@@ -31,4 +31,13 @@ export class Session {
         else
             return null;
     }
+
+    static getKeyString(key: string): string | null {
+        return sessionStorage.getItem(key);
+    }
+
+    static clear() {
+        sessionStorage.clear();
+        window.location.reload();
+    }
 }
